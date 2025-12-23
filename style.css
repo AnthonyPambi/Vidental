@@ -1,0 +1,847 @@
+/* Importación de tipografía moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --morado-principal: #6B2D91;
+    --morado-vibrante: #9D50BB;
+    --magenta-acento: #E02E8D;
+    --fondo-suave: #F8F9FA;
+    --texto-cuerpo: #333333;
+    --blanco: #ffffff;
+    --radio-borde: 12px;
+}
+
+/*Desplazamiento Suave (Smooth Scroll)*/
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--texto-cuerpo);
+    background-color: var(--fondo-suave);
+}
+
+/* --- Estilos para el Logo y Header Alineados --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ALINEA TODO AL CENTRO VERTICAL */
+    padding: 0.5rem 5%;
+    background-color: var(--blanco);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    /* Altura fija para evitar desorden */
+}
+
+/* 2. BOTÓN HAMBURGUESA (Nuevo: Oculto en PC) */
+.menu-toggle {
+    display: none;
+    /* Se oculta en PC */
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    gap: 5px;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: var(--morado-principal);
+    border-radius: 10px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 45px;
+    /* Tamaño del logo para que no empuje el texto */
+    width: auto;
+    object-fit: contain;
+}
+
+header h1 {
+    color: var(--morado-principal);
+    font-size: 1rem;
+    /* CAMBIADO A 1REM PARA QUE SEA IGUAL AL MENÚ */
+    font-weight: 600;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    /* ALINEA LOS LINKS CON EL BOTÓN */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--texto-cuerpo);
+    font-size: 1rem;
+    /* TAMAÑO 1REM */
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--morado-vibrante);
+}
+
+/* --- Estilo Botón WhatsApp --- */
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white !important;
+    padding: 8px 18px;
+    /* Ajustado para que no se vea gigante */
+    border-radius: 50px;
+    font-size: 1rem;
+    /* TAMAÑO 1REM */
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+
+    header {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 0 15px; /* Pequeño margen para que no toque el borde físico del cristal */
+    }
+
+    .menu-toggle {
+        display: flex;
+        margin-left: auto; /* ESTA es la clave: empuja todo hacia la derecha */
+        z-index: 1001;
+        cursor: pointer;
+        /* Aparece en móvil */
+    }
+
+    
+
+    nav ul {
+        display: none; /* Escondemos el menú original */
+        flex-direction: column;
+        position: fixed;
+        top: 70px; /* Justo debajo del header */
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: #ffffff;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    nav ul.active {
+        display: flex !important;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+        margin-left: 0; /* Quita el margen izquierdo que tenías en PC */
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* --- Sección Hero (Inicio) --- */
+#inicio {
+    padding: 100px 10%;
+    text-align: center;
+    
+    /* 1. Cambiamos 'background' por 'background-image' */
+    /* 2. Usamos RGBA para que los colores morados sean transparentes (0.7 es 70% de color) */
+    background-image: linear-gradient(135deg, 
+        rgba(106, 27, 154, 0.7)/*, /* Reemplaza con el valor de --morado-principal en RGB */
+        /*rgba(155, 38, 182, 0.7)  /* Reemplaza con el valor de --morado-vibrante en RGB */
+    ), 
+    url('Imagenes de Contenido de Pagina/fondo.png'); /* <--- AQUÍ pones tu imagen */
+
+    /* 3. Ajustes para que la imagen se vea perfecta */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto elegante al hacer scroll */
+    color: var(--blanco);
+    
+    /* 4. Aseguramos que la sección tenga buena altura */
+    min-height: 80vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#inicio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Esto hace que el texto resalte sobre la foto */
+}
+
+#inicio p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+button {
+    background-color: var(--magenta-acento);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c4267a;
+    transform: translateY(-3px);
+}
+
+
+/* --- Sección Servicios Optimizada --- */
+.titulo-desplegable {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;     /* Centra el contenido verticalmente */
+    gap: 15px;
+    transition: background-color 0.3s;
+    
+    /* Añadimos esto para asegurar el centrado total */
+    width: 100%;            /* Ocupa todo el ancho para poder centrarse */
+    text-align: center;      /* Alinea el texto al centro */
+    margin: 0 auto;          /* Centra el bloque en el contenedor */
+    padding: 5px 0;         /* Espaciado para que respire */
+}
+
+.contenido-desplegable {
+    display: none; 
+    overflow: hidden;
+    transition: all 0.3s ease;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+    width: 100%;            /* Asegura que el contenido también esté centrado */
+}
+
+/* Cuando el padre tenga la clase .abierto, el contenido se muestra */
+.categoria-servicio.abierto .contenido-desplegable {
+    display: flex; /* Se muestra como flex para que tus artículos sigan en fila */
+}
+
+/* Rotar la flechita cuando esté abierto */
+.categoria-servicio.abierto i {
+    transform: rotate(180deg);
+}
+
+#servicios {
+    /* 1. Mezclamos el color con la imagen usando linear-gradient */
+    background-image: linear-gradient(
+        rgba(157, 80, 187, 0.80), /* Tu color #9D50BB con 85% de opacidad */
+        rgba(106, 27, 154, 0.9)   /* Un morado un poco más oscuro al final */
+    ), 
+    url('Imagenes de Contenido de Pagina/limpieza.png'); /* Ruta de tu imagen */
+
+    /* 2. Ajustes de posicionamiento */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Esto da un efecto elegante al hacer scroll */
+
+    /* 3. Tus estilos actuales */
+    padding: 60px 5%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    box-sizing: border-box;
+}
+
+.servicio-card {
+    max-width: 350px; /* O el tamaño que prefieras para tus tarjetas */
+}
+
+
+/* Títulos de Categoría (Ocupan toda la fila) */
+#servicios h2 {
+    flex: 0 0 100%;
+    /* Fuerza al título a ocupar el 100% del ancho */
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    
+    margin: 20px 0 10px 0;
+    /* Espaciado arriba y abajo */
+    font-size: 2rem;
+}
+#servicios h2 {
+    flex: 0 0 100%;
+    width: 100%;             /* Asegura que cubra todo el ancho */
+    text-align: center;
+    
+    /* APLICANDO LA FRANJA */
+    /*background-color: rgba(155, 38, 182, 0.7); /* El color exacto que pediste */
+    color: white;              /* Cambiamos a blanco para que se lea bien sobre el morado */
+    padding: 20px 0;           /* Esto le da grosor a la franja */
+    margin: 40px 0;            /* Espacio arriba y abajo de la franja */
+    
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-left: none;         /* Quitamos bordes si los hubiera */
+    border-right: none;
+}
+
+/* Tarjetas de Servicio */
+article {
+    background: var(--blanco);
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-top: 3px solid transparent;
+    text-align: center;
+
+    /* Cálculo para 3 columnas exactas: 
+       (100% / 3) menos el espacio del gap */
+    flex: 0 1 calc(33.333% - 25px);
+    min-width: 280px;
+    /* Evita que se vuelvan demasiado delgadas */
+    max-width: 350px;
+    /* Evita que se vuelvan demasiado anchas */
+}
+
+article:hover {
+    border-top: 5px solid var(--magenta-acento);
+    transform: translateY(-5px);
+}
+
+
+
+article img {
+    width: 90%;
+    height: 200px;
+    object-fit: cover;
+    /* Evita que la imagen se deforme */
+    margin-bottom: 5px;
+    border-radius: 30px;
+}
+
+article h3 {
+    color: var(--morado-vibrante);
+    margin-bottom: 10px;
+    
+}
+
+article ul {
+    list-style: none;
+    padding: 0;
+}
+
+article ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* --- Adaptación para Móviles --- */
+@media (max-width: 900px) {
+    article {
+        flex: 0 1 100%;
+        /* En pantallas pequeñas, una por fila */
+        max-width: 400px;
+    }
+}
+
+/* --- Sección Nosotros --- */
+#nosotros {
+    padding: 80px 10%;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.9), 
+        rgba(255, 255, 255, 0.8)
+    ), 
+    url('Imagenes de Contenido de Pagina/fondodientes.png');
+
+    /* 2. Ajustes para que la imagen no se mueva y cubra todo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Opcional: da un efecto elegante de profundidad */
+    
+    /* 3. Mantenemos el color de respaldo por si la imagen no carga */
+    background-color: #ffffff;
+}
+
+.nosotros-contenido {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#nosotros h2 {
+    color: var(--morado-principal);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.lema {
+    color: var(--magenta-acento);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nosotros-texto p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: var(--texto-cuerpo);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.especialidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.especialidad-item {
+    background: var(--fondo-suave);
+    padding: 25px;
+    border-radius: var(--radio-borde);
+    border-left: 5px solid var(--morado-vibrante);
+    text-align: left;
+}
+
+.especialidad-item h4 {
+    color: var(--morado-principal);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.especialidad-item p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    color: #555;
+}
+
+.otros-servicios {
+    font-size: 1rem;
+    padding: 20px;
+    background: #f0e6f5;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.otros-servicios span {
+    color: var(--morado-principal);
+    font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #nosotros h2 {
+        font-size: 2rem;
+    }
+
+    .otros-servicios {
+        border-radius: 15px;
+    }
+}
+
+/* --- Sección de Testimonios --- */
+#testimonios {
+    padding: 80px 10%;
+    background-image: linear-gradient(
+        rgba(45, 19, 64, 1), 
+        rgba(45, 19, 64, 0.85)
+    ), 
+    url('Imagenes de Contenido de Pagina/fondoblanco.png');
+
+    /* 2. Ajustes para que la imagen no se mueva y cubra todo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 80px 10%;
+    background-color: var(--fondo-suave);
+    /* Fondo sutil para contrastar con las tarjetas blancas */
+    text-align: center;
+}
+
+#testimonios h2 {
+    color:#c4267a;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.testimonios-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.testimonio-card {
+    background: var(--blanco);
+    padding: 40px 30px;
+    border-radius: var(--radio-borde);
+    box-shadow: 0 10px 30px rgba(107, 45, 145, 0.05);
+    /* Sombra suave con tono morado */
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-10px);
+}
+
+.testimonio-card::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 5rem;
+    color: var(--morado-vibrante);
+    opacity: 0.1;
+    font-family: serif;
+}
+
+.estrellas {
+    color: #FFD700;
+    /* Color dorado para las estrellas */
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.testimonio-card p {
+    font-style: italic;
+    color: var(--texto-cuerpo);
+    margin-bottom: 20px;
+}
+
+.testimonio-card h4 {
+    color: var(--magenta-acento);
+    font-weight: 600;
+}
+
+/* --- Sección de horario (Formulario) --- */
+#horarios {
+    padding: 50px 10%;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.9), 
+        rgba(255, 255, 255, 0.8)
+    ), 
+    url('Imagenes de Contenido de Pagina/fondodientes.png');
+
+    /* 2. Ajustes para que la imagen no se mueva y cubra todo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Opcional: da un efecto elegante de profundidad */
+    
+    /* 3. Mantenemos el color de respaldo por si la imagen no carga */
+    background-color: #ffffff;
+    padding: 50px 10%;
+    background-color: #f9f9f9;
+}
+
+.horarios-container {
+    display: flex;
+    align-items: flex-start; /* Alinea al tope */
+    justify-content: center;
+    gap: 50px; /* Espacio entre horario y video */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col-izquierda {
+    flex: 1;
+    max-width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.col-derecha {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 326px;
+}
+
+/* Estilos de la tabla de horarios */
+.subtitulo {
+    color: #E02E8D;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.domingo {
+    background: #fff0f7;
+    border-radius: 10px;
+    padding: 10px;
+    border-bottom: none;
+    margin-top: 10px;
+}
+
+/* Botón de reserva */
+.btn-reserva {
+    display: block; /* Ocupa el ancho necesario debajo de la tabla */
+    background-color:  #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.btn-reserva:hover {
+    background-color: #128C7E;
+    transform: translateY(-3px);
+}
+
+/* RESPONSIVO: En móviles se pone uno arriba del otro */
+@media (max-width: 900px) {
+    .horarios-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .col-izquierda, .col-derecha {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/*Redes Sociales en el section*/
+.redes-sociales {
+    background-color: #E02E8D; /* Tu color magenta en toda la franja */
+    padding: 40px 0;           /* Espaciado arriba y abajo */
+    width: 100%;               /* Asegura que ocupe todo el ancho */
+    display: flex;
+    flex-direction: column;    /* Alinea el título y luego los iconos */
+    align-items: center;       /* Centra horizontalmente */
+    justify-content: center;   /* Centra verticalmente */
+}
+
+.redes-sociales h3 {
+    color: white;              /* Título en blanco para contraste */
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.iconos-container {
+    display: flex;             /* Pone los iconos uno al lado del otro */
+    justify-content: center;   /* Los centra en medio de la franja */
+    gap: 25px;                 /* Espacio entre cada icono */
+}
+
+.icon-link {
+    color: white;              /* Iconos blancos */
+    font-size: 30px;           /* Tamaño de los iconos */
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.icon-link:hover {
+    transform: scale(1.2);     /* El icono se agranda un poco */
+    opacity: 0.8;              /* Brilla un poco al pasar el mouse */
+}
+
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .iconos-container {
+        gap: 15px;             /* Menos espacio entre iconos en celular */
+    }
+    .icon-link {
+        font-size: 25px;
+    }
+}
+
+/* --- Pie de Página --- */
+/* --- Estructura Lado a Lado del Footer --- */
+footer {
+    padding: 80px 10%;
+    background-image: linear-gradient(
+        rgba(45, 19, 64, 1), 
+        rgba(45, 19, 64, 0.85)
+    ), 
+    url('Imagenes de Contenido de Pagina/fondoblanco.png');
+
+    /* 2. Ajustes para que la imagen no se mueva y cubra todo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    color: #ffffff;
+    padding: 60px 10% 20px;
+}
+
+.footer-container {
+    display: flex;
+    /* Esto pone los elementos de lado a lado */
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    /* Espacio entre el texto y el mapa */
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.footer-info {
+    flex: 1;
+    /* Toma la mitad del espacio */
+    text-align: left;
+}
+
+.footer-info h3 {
+    color: #E02E8D;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    
+}
+
+.footer-info p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.lista-contacto {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.lista-contacto li {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+/* Estilo para la Imagen del Mapa */
+.footer-mapa {
+    flex: 1;
+    /* Toma la otra mitad del espacio */
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.img-mapa-estilo {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 15px;
+    /* Bordes redondeados como en tus fotos */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Sombra para que resalte */
+    border: 3px solid var(--morado-vibrante);
+    transition: transform 0.3s ease;
+    height: auto;
+}
+
+.img-mapa-estilo:hover {
+    transform: scale(1.02);
+    /* Efecto de zoom ligero al pasar el mouse */
+}
+
+/* Responsivo para Celulares */
+@media (max-width: 850px) {
+    footer {
+        padding: 40px 5%; /* Menos espacio a los lados en móvil */
+        background-attachment: scroll; /* Vital: evita errores visuales en móviles */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        /* Se ponen uno arriba del otro en móviles */
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-mapa {
+        width: 100%; /* El contenedor del mapa ocupa todo el ancho */
+        margin-top: 30px; /* Separa el mapa de la información de contacto */
+    }
+
+    .img-mapa-estilo {
+        width: 70%; /* En móviles, que ocupe el 70% del ancho del celular */
+        max-width: 250px; /* Evita que crezca demasiado en tablets */
+    }
+
+    .footer-info {
+        text-align: center;
+    }
+
+    .lista-contacto {
+        padding: 0;
+        list-style: none;
+    }
+}
+
+.footer-bottom {
+    background-color: #E02E8D; /* Tu color magenta */
+    color: #ffffff;            /* Texto blanco para que resalte */
+    text-align: center;
+    padding: 20px 0;           /* Relleno arriba y abajo para crear la franja */
+    font-size: 0.9rem;
+    width: 100%;               /* Asegura que ocupe todo el ancho */
+    
+    /* Quitamos la opacidad y el borde para que el color sea sólido y limpio */
+    opacity: 1; 
+    border-top: none;
+}
+.creador {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
