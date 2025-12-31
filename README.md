@@ -1,6 +1,5 @@
 # 🦷 Vidental | Tu Sonrisa, Nuestra Prioridad
 
-[![GitHub Pages Status](https://github.com/anthonypambi/Vidental/actions/workflows/deploy.yml/badge.svg)]
 
 ## ✨ Características Principales
 
